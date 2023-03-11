@@ -18,12 +18,14 @@ class Positions(db.Model):
     time = db.Column(db.Time, nullable=False, default=datetime.now().time())
    #server_default=func.now()
 
-conn = pymysql.connect(host='localhost', user=user, passwd=password, port=3306)
-with conn.cursor() as cur:
-    cur.execute('CREATE DATABASE IF NOT EXISTS DOBOT;')
 
-with app.app_context():
-   db.drop_all()
-   db.create_all()
+if __name__ == '__main__': 
+    conn = pymysql.connect(host='localhost', user=user, passwd=password, port=3306)
+    with conn.cursor() as cur:
+        cur.execute('CREATE DATABASE IF NOT EXISTS DOBOT;')
+
+    with app.app_context():
+        db.drop_all()
+        db.create_all()
 
 #(x, y, z, r, j1, j2, j3, j4) = self.device.pose()
