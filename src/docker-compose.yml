@@ -1,8 +1,31 @@
-version: '3'
+version: "3"
 services:
   backend:
     build: .
     ports:
-      - '3001:3001'
+      - "3001:3001"
     volumes:
       - $PWD:/flask-app
+    restart: always
+    depends_on:
+      - db
+  db:
+    platform: linux/x86_64
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: "DOBOT"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "password12345"
+    ports:
+      - "3002:3306"
+    expose:
+      - "3306"
+      # Where our data will be persisted
+    volumes:
+      - my-db:/var/lib/mysql
+
+# Names our volume
+volumes:
+  my-db:

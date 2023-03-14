@@ -10,4 +10,14 @@ EXPOSE 3001
 
 COPY . .
 
-CMD [ "python", "app.py" ]
+ENV MYSQL_MIGRATIONS_HOST='db'
+ENV MYSQL_MIGRATIONS_PORT=3306
+ENV MYSQL_HOST='db:3306'
+ENV MYSQL_DATABASE='DOBOT'
+ENV MYSQL_USER='root'
+ENV MYSQL_PASSWORD='password12345'
+
+
+COPY . .
+
+CMD [ "python", "__init__.py" ]

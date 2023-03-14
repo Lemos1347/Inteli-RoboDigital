@@ -1,4 +1,5 @@
 from __init__ import db, app, user, password
+import os
 from sqlalchemy.sql import func
 from datetime import datetime
 import pymysql
@@ -27,7 +28,7 @@ class Positions(db.Model):
 
 
 if __name__ == '__main__': 
-    conn = pymysql.connect(host='localhost', user=user, passwd=password, port=3306)
+    conn = pymysql.connect(host=os.environ['MYSQL_MIGRATIONS_HOST'] or 'localhost', user=user, passwd=password, port=int(os.environ['MYSQL_MIGRATIONS_PORT']) or 3306)
     with conn.cursor() as cur:
         cur.execute('CREATE DATABASE IF NOT EXISTS DOBOT;')
 

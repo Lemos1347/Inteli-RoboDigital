@@ -4,13 +4,14 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc, asc
 from datetime import datetime
+import os
 import pymysql
 
 #MySQL database credentials
-host = 'localhost:3306'
-user = 'root'
-password = 'rootpass12345'
-database = 'DOBOT'
+host = os.environ['MYSQL_HOST'] or 'localhost:3306'
+user = os.environ['MYSQL_USER'] or 'root'
+password = os.environ['MYSQL_PASSWORD'] or 'rootpass12345'
+database = os.environ['MYSQL_DATABASE'] or 'DOBOT'
 database_uri = f"mysql+pymysql://{user}:{password}@{host}/{database}"
 
 # App's config
