@@ -2,6 +2,8 @@
 from flask import Flask, make_response, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import desc, asc
+from datetime import datetime
 import pymysql
 
 #MySQL database credentials
@@ -11,8 +13,7 @@ password = 'rootpass12345'
 database = 'DOBOT'
 database_uri = f"mysql+pymysql://{user}:{password}@{host}/{database}"
 
-# App's config function
-
+# App's config
 app = Flask(__name__)
 # Enable cors
 CORS(app)
@@ -64,37 +65,62 @@ def handle_pose():
    # (x, y, z, r, j1, j2, j3, j4) = dobot_instance.device.pose()
    (x, y, z, r, j1, j2, j3, j4) = (1, 2, 3, 4, 5, 6, 7, 8)
    position = Positions(x=x, y=y, z=z, r=r, j1=j1, j2=j2, j3=j3, j4=j4)
-   with app.app_context():
-        db.session.add(position)
-        db.session.commit()
+   # with app.app_context():
+   db.session.add(position)
+   db.session.commit()
    response = {"status": "success", "message": "positon got with success!"}
    return make_response(jsonify(response), 200)
 
 @app.get('/all')
 def handle_all():
-   with app.app_context():
-      from migrations import Positions
-      positions = Positions.query.all()
-   return make_response(positions, 200)
+
+   from migrations import Positions
+   positions = db.session.scalars(db.select(Positions).order_by(desc(Positions.id))).all()
+   response = []
+   for position in positions:
+      response.append(position.dict())
+   
+   # db.first_or_404(db.select(class).filter_by(row=var))
+   return make_response(response, 200)
+
+@app.get('/date/<string:date>')
+def handle_date(date):
+   from migrations import Positions
+   try:
+      date_compare = datetime.strptime(date, '%Y-%m-%d').date()
+      positions = db.session.scalars(db.select(Positions).filter_by(date=date_compare).order_by(desc(Positions.id))).all()
+      response = []
+      for position in positions:
+         response.append(position.dict())
+      return make_response(response, 200)
+   except Exception as err:
+      response = {'type': 'error', 'message': f'{err}'}
+      return make_response(jsonify(response), 500)
 
 @app.get('/time/<string:time>')
 def handle_time(time):
    from migrations import Positions
-   with app.app_context():
-      try:
-         position = Positions.query.filter(Positions.time == time).all()
-         return make_response(jsonify(position), 200)
-      except Exception as err:
-         return make_response(err, 500)
+   try:
+      time_compare = datetime.strptime(time, '%H:%M:%S').time()
+      positions = db.session.scalars(db.select(Positions).filter_by(time=time_compare).order_by(desc(Positions.id))).all()
+      response = []
+      for position in positions:
+         response.append(position.dict())
+      return make_response(response, 200)
+   except Exception as err:
+      response = {'type': 'error', 'message': f'{err}'}
+      return make_response(jsonify(response), 500)
 
 @app.get('/id/<int:id>')
 def handle_id(id):
    from migrations import Positions
    try:
-      position = Positions.query.filter(Positions.id == id).all()
-      return make_response(jsonify(position), 200)
+      position = db.first_or_404(db.select(Positions).filter_by(id=id))
+      response = position.dict()
+      return make_response(response, 200)
    except Exception as err:
-      return make_response(jsonify(err), 500)
+      response = {'type': 'error', 'message': f'{err}'}
+      return make_response(jsonify(response), 500)
 
 
 if __name__ == '__main__': 

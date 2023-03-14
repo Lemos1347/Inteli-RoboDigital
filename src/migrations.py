@@ -18,6 +18,13 @@ class Positions(db.Model):
     time = db.Column(db.Time, nullable=False, default=datetime.now().time())
    #server_default=func.now()
 
+    def dict(self) -> dict:
+        response = {'id': self.id, 'x': self.x, 'y': self.y, 'z': self.z, 'r': self.r, 'j1': self.j1, 'j2': self.j2, 'j3': self.j3, 'j4': self.j4, 'date': str(self.date), 'time': str(self.time)}
+        return response
+
+    def __repr__(self) -> str:
+        return str({'id': self.id, 'x': self.x, 'y': self.y, 'z': self.z, 'r': self.r, 'j1': self.j1, 'j2': self.j2, 'j3': self.j3, 'j4': self.j4, 'date': self.date, 'time': self.time})
+
 
 if __name__ == '__main__': 
     conn = pymysql.connect(host='localhost', user=user, passwd=password, port=3306)
@@ -27,5 +34,3 @@ if __name__ == '__main__':
     with app.app_context():
         db.drop_all()
         db.create_all()
-
-#(x, y, z, r, j1, j2, j3, j4) = self.device.pose()
