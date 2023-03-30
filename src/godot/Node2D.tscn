@@ -1,0 +1,691 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Node2D.gd" type="Script" id=1]
+[ext_resource path="res://Positions.gd" type="Script" id=2]
+[ext_resource path="res://GeneratePosition.gd" type="Script" id=3]
+[ext_resource path="res://GetPosition.gd" type="Script" id=4]
+[ext_resource path="res://MoverRoboParaPosicao.gd" type="Script" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.152941, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0.152941, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0.152941, 1, 1 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 347.0
+margin_top = 1.0
+margin_right = 1020.0
+margin_bottom = 479.0
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="LastPosition" type="Button" parent="."]
+margin_left = 33.0
+margin_top = 559.0
+margin_right = 235.0
+margin_bottom = 592.0
+text = "ÚLTIMA POSIÇÃO"
+
+[node name="GeneratePosition" type="Button" parent="."]
+margin_left = 801.0
+margin_top = 557.0
+margin_right = 1003.0
+margin_bottom = 590.0
+text = "EXIBIR"
+script = ExtResource( 3 )
+
+[node name="Positions" type="OptionButton" parent="GeneratePosition"]
+margin_left = 1.0
+margin_top = -50.0
+margin_right = 201.0
+margin_bottom = -10.0
+text = "Escolha a posição"
+align = 1
+script = ExtResource( 2 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="GeneratePosition/Positions"]
+
+[node name="HTTPRequest" type="HTTPRequest" parent="GeneratePosition"]
+
+[node name="Clear" type="Button" parent="."]
+margin_left = 279.0
+margin_top = 559.0
+margin_right = 381.0
+margin_bottom = 592.0
+text = "LIMPAR"
+
+[node name="J1" type="Control" parent="."]
+margin_left = 370.0
+margin_top = 50.0
+margin_right = 703.0
+margin_bottom = 178.0
+rect_rotation = 0.122999
+
+[node name="Label" type="Label" parent="J1"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.344
+anchor_right = 0.344
+margin_right = 100.0
+margin_bottom = 100.0
+text = "J1"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="J1"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_right = 319.39
+margin_bottom = 49.0
+custom_styles/fg = SubResource( 1 )
+min_value = -139.0
+max_value = 138.0
+value = -139.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Esquerda" type="Label" parent="J1"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.701
+anchor_right = 0.701
+margin_right = 100.0
+margin_bottom = 100.0
+text = "ESQUERDA"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Direita" type="Label" parent="J1"]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 100.0
+margin_bottom = 100.0
+text = "DIREITA"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="J2" type="Control" parent="."]
+margin_left = 370.0
+margin_top = 179.0
+margin_right = 702.0
+margin_bottom = 307.0
+
+[node name="Label" type="Label" parent="J2"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.344
+anchor_right = 0.344
+margin_right = 100.0
+margin_bottom = 100.0
+text = "J2"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="J2"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_right = 319.39
+margin_bottom = 49.0
+custom_styles/fg = SubResource( 2 )
+min_value = -3.0
+max_value = 76.0
+value = -3.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Baixo" type="Label" parent="J2"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.701
+anchor_right = 0.701
+margin_right = 100.0
+margin_bottom = 100.0
+text = "BAIXO"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cima" type="Label" parent="J2"]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 100.0
+margin_bottom = 100.0
+text = "CIMA"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="J3" type="Control" parent="."]
+margin_left = 370.0
+margin_top = 322.0
+margin_right = 696.0
+margin_bottom = 450.0
+
+[node name="Label" type="Label" parent="J3"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.344
+anchor_right = 0.344
+margin_right = 100.0
+margin_bottom = 100.0
+text = "J3"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="J3"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_right = 319.39
+margin_bottom = 49.0
+custom_styles/fg = SubResource( 3 )
+min_value = -8.0
+max_value = 82.0
+value = -8.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Encolhido" type="Label" parent="J3"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.701
+anchor_right = 0.701
+margin_right = 100.0
+margin_bottom = 100.0
+text = "ENCOLHIDO"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Esticado" type="Label" parent="J3"]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 100.0
+margin_bottom = 100.0
+text = "ESTICADO"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="UltimaBusca" type="Control" parent="."]
+margin_left = 28.0
+margin_top = 60.0
+margin_right = 340.0
+margin_bottom = 469.0
+
+[node name="Juntas" type="Control" parent="UltimaBusca"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -116.0
+margin_top = -149.5
+margin_right = 116.0
+margin_bottom = 131.5
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="J1" type="Control" parent="UltimaBusca/Juntas"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -111.5
+margin_right = 111.5
+margin_bottom = 84.0
+rect_rotation = 0.122999
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="UltimaBusca/Juntas/J1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2.91437
+margin_top = -2.23302
+margin_right = 26.0856
+margin_bottom = 11.767
+rect_scale = Vector2( 0.7, 0.7 )
+text = "J1"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="UltimaBusca/Juntas/J1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -75.5
+margin_top = -34.0
+margin_right = 84.5
+margin_bottom = -10.0
+min_value = -139.0
+max_value = 138.0
+value = -139.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Direita" type="Label" parent="UltimaBusca/Juntas/J1"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -71.4403
+margin_top = -14.3253
+margin_right = -7.44026
+margin_bottom = 33.6747
+rect_scale = Vector2( 0.7, 0.7 )
+text = "DIREITA"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Esquerda" type="Label" parent="UltimaBusca/Juntas/J1"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 36.5751
+margin_top = -7.07845
+margin_right = 120.575
+margin_bottom = 22.9216
+rect_scale = Vector2( 0.7, 0.7 )
+text = "ESQUERDA"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="J2" type="Control" parent="UltimaBusca/Juntas"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -111.5
+margin_top = -42.0
+margin_right = 111.5
+margin_bottom = 42.0
+rect_rotation = 0.122999
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="UltimaBusca/Juntas/J2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2.91437
+margin_top = -2.23302
+margin_right = 26.0856
+margin_bottom = 11.767
+rect_scale = Vector2( 0.7, 0.7 )
+text = "J2"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="UltimaBusca/Juntas/J2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -75.5
+margin_top = -34.0
+margin_right = 84.5
+margin_bottom = -10.0
+min_value = -3.0
+max_value = 76.0
+value = -3.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cima" type="Label" parent="UltimaBusca/Juntas/J2"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -71.4403
+margin_top = -14.3253
+margin_right = -7.44026
+margin_bottom = 33.6747
+rect_scale = Vector2( 0.7, 0.7 )
+text = "CIMA"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Baixo" type="Label" parent="UltimaBusca/Juntas/J2"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 36.5751
+margin_top = -7.07845
+margin_right = 120.575
+margin_bottom = 22.9216
+rect_scale = Vector2( 0.7, 0.7 )
+text = "BAIXO"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="J3" type="Control" parent="UltimaBusca/Juntas"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -111.5
+margin_top = -84.0
+margin_right = 111.5
+rect_rotation = 0.122999
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="UltimaBusca/Juntas/J3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2.91437
+margin_top = -2.23302
+margin_right = 26.0856
+margin_bottom = 11.767
+rect_scale = Vector2( 0.7, 0.7 )
+text = "J3"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="UltimaBusca/Juntas/J3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -75.5
+margin_top = -34.0
+margin_right = 84.5
+margin_bottom = -10.0
+min_value = -8.0
+max_value = 82.0
+value = -8.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Esticado" type="Label" parent="UltimaBusca/Juntas/J3"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -71.4403
+margin_top = -14.3253
+margin_right = -7.44026
+margin_bottom = 33.6747
+rect_scale = Vector2( 0.7, 0.7 )
+text = "ESTICADO"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Encolhido" type="Label" parent="UltimaBusca/Juntas/J3"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 36.5751
+margin_top = -7.07845
+margin_right = 120.575
+margin_bottom = 22.9216
+rect_scale = Vector2( 0.7, 0.7 )
+text = "ENCOLHIDO"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="UltimaBusca"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -49.0
+margin_top = 28.0
+margin_right = 48.0
+margin_bottom = 42.0
+text = "ÚLTIMA BUSCA"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cords" type="Label" parent="UltimaBusca"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -97.0
+margin_top = -19.0
+margin_right = 39.0
+margin_bottom = -1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Posicionamento" type="Control" parent="."]
+margin_left = 765.0
+margin_top = 167.0
+margin_right = 960.0
+margin_bottom = 341.0
+
+[node name="x" type="Label" parent="Posicionamento"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -19.5
+margin_top = 38.0
+margin_right = 20.5
+margin_bottom = 52.0
+rect_min_size = Vector2( 10, 10 )
+text = "x ="
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="y" type="Label" parent="Posicionamento"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -18.5
+margin_top = -19.0
+margin_right = 21.5
+margin_bottom = -5.0
+text = "y = "
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="z" type="Label" parent="Posicionamento"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.497
+anchor_top = 0.736
+anchor_right = 0.497
+anchor_bottom = 0.736
+margin_left = -17.915
+margin_top = -31.064
+margin_right = 22.085
+margin_bottom = -17.064
+text = "z = "
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="Posicionamento"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -24.5
+margin_right = 24.5
+margin_bottom = 14.0
+text = "Posição:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ResulX" type="Label" parent="Posicionamento"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 113.0
+margin_top = 38.0
+margin_right = 147.0
+margin_bottom = 52.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ResulY" type="Label" parent="Posicionamento"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 113.0
+margin_top = 68.0
+margin_right = 147.0
+margin_bottom = 82.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ResulZ" type="Label" parent="Posicionamento"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 113.0
+margin_top = 97.0
+margin_right = 147.0
+margin_bottom = 111.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 647.0
+margin_top = 14.0
+margin_right = 744.0
+margin_bottom = 28.0
+text = "BUSCA ATUAL"
+align = 1
+valign = 1
+
+[node name="GetPosition" type="Button" parent="."]
+margin_left = 485.0
+margin_top = 562.0
+margin_right = 698.0
+margin_bottom = 594.0
+text = "GET POSIÇÃO ATUAL DO ROBO"
+script = ExtResource( 4 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="GetPosition"]
+
+[node name="HTTPRequest2" type="HTTPRequest" parent="GetPosition"]
+
+[node name="MoverRoboParaPosicao" type="Button" parent="."]
+margin_left = 454.0
+margin_top = 518.0
+margin_right = 743.0
+margin_bottom = 552.0
+text = "MOVER ROBO PARA POSIÇÃO PESQUISADA"
+script = ExtResource( 5 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="MoverRoboParaPosicao"]
+
+[node name="HTTPRequest2" type="HTTPRequest" parent="MoverRoboParaPosicao"]
+
+[node name="HTTPRequest2" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="LastPosition" to="." method="_on_LastPosition_pressed"]
+[connection signal="pressed" from="GeneratePosition" to="GeneratePosition" method="_on_GeneratePosition_pressed"]
+[connection signal="pressed" from="GeneratePosition/Positions" to="GeneratePosition/Positions" method="_on_Positions_pressed"]
+[connection signal="pressed" from="Clear" to="." method="_on_Clear_pressed"]
+[connection signal="pressed" from="GetPosition" to="GetPosition" method="_on_GetPosition_pressed"]
+[connection signal="pressed" from="MoverRoboParaPosicao" to="MoverRoboParaPosicao" method="_on_MoverRoboParaPosicao_pressed"]

@@ -4,9 +4,13 @@ services:
     build: .
     ports:
       - "3001:3001"
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/ttyUSB1:/dev/ttyUSB1
     volumes:
       - $PWD:/flask-app
     restart: always
+    privileged: true
     depends_on:
       - db
   db:
@@ -24,6 +28,7 @@ services:
       - "3306"
       # Where our data will be persisted
     volumes:
+      - ./mysql-dump:/docker-entrypoint-initdb.d
       - my-db:/var/lib/mysql
 
 # Names our volume
