@@ -13,6 +13,7 @@ Podemos rodar o projeto de duas maneiras:
  2. Com Docker
 
 #### Python nativo
+*Observação: altere as credenciais e a url do banco de dados MySQL definidos no arquivo `src/api/__init__.py` e importe os dados localizado em `src/api/mysql-dump/schema.sql`.*
 Rode os seguintes comandos em `/src`
 ```shell
 pip install -r requirements.txt
@@ -32,4 +33,6 @@ Rode os seguintes comando em `/src`
 ```shell
 docker compose up
 ```
-Pronto, o projeto já estará rodando em um container é poderá ser acessado em localhost na porta mencionada no terminal!
+Pronto, o projeto já estará rodando em um container é poderá ser acessado em `localhost:3001` e o banco de dados `localhost:3002`!
+
+*Observação: caso o projeto rode em docker, não será possível conectar com o Dobot Magician Lite pois não foi feita a configuração no docker-compose*
