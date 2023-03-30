@@ -50,4 +50,38 @@ func change_main_progress_bar(j1, j2, j3, x, y, z):
 	$Posicionamento/ResulX.text = x
 	$Posicionamento/ResulY.text = y
 	$Posicionamento/ResulZ.text = z
+	
+	if x == "" and y == "":
+		$Garra.rect_position = Vector2(866, 361)
+	else:
+		$Garra.rect_position = Vector2(converter_cords_x(float(y)), converter_cords_y(float(x)))
+	
 	preenchido = true
+	
+func converter_cords_x(y_dobot):
+	if y_dobot > 0:
+		var diferenca = 366 - y_dobot
+		var diferenca_godot = diferenca/3.34
+		var loc_godot = 753 + diferenca_godot
+		return loc_godot
+	
+	elif y_dobot < 0:
+		var diferenca = -366 - y_dobot
+		var diferenca_godot = diferenca/3.34
+		var loc_godot = 972 + diferenca_godot
+		return loc_godot
+
+func converter_cords_y(x_dobot):
+	if x_dobot > 0:
+		var diferenca = 365 - x_dobot
+		var diferenca_godot = diferenca/2.88
+		var loc_godot = 239 + diferenca_godot
+		return loc_godot
+	
+	elif x_dobot < 0:
+		var diferenca = -183 - x_dobot
+		var diferenca_godot = diferenca/2.88
+		var loc_godot = 429 + diferenca_godot
+		return loc_godot
+		
+		

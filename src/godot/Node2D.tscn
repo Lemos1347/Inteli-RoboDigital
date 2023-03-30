@@ -543,10 +543,10 @@ __meta__ = {
 }
 
 [node name="Posicionamento" type="Control" parent="."]
-margin_left = 765.0
-margin_top = 167.0
-margin_right = 960.0
-margin_bottom = 341.0
+margin_left = 750.0
+margin_top = 60.0
+margin_right = 945.0
+margin_bottom = 234.0
 
 [node name="x" type="Label" parent="Posicionamento"]
 modulate = Color( 0, 0, 0, 1 )
@@ -682,6 +682,49 @@ script = ExtResource( 5 )
 [node name="HTTPRequest2" type="HTTPRequest" parent="MoverRoboParaPosicao"]
 
 [node name="HTTPRequest2" type="HTTPRequest" parent="."]
+
+[node name="Canvas" type="ColorRect" parent="."]
+margin_left = 748.0
+margin_top = 224.0
+margin_right = 995.0
+margin_bottom = 451.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Dobot" type="ColorRect" parent="Canvas"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -23.5
+margin_top = -114.0
+margin_right = 26.5
+margin_bottom = -74.0
+
+[node name="DobotName" type="Label" parent="Canvas/Dobot"]
+margin_left = 1.0
+margin_top = 11.0
+margin_right = 49.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "DOBOT"
+align = 1
+valign = 1
+
+[node name="Posicionamento2" type="Label" parent="."]
+margin_left = 791.0
+margin_top = 207.0
+margin_right = 949.0
+margin_bottom = 221.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "POSICIONAMENTO"
+align = 1
+valign = 1
+
+[node name="Garra" type="ColorRect" parent="."]
+margin_left = 866.0
+margin_top = 361.0
+margin_right = 882.0
+margin_bottom = 376.0
 
 [connection signal="pressed" from="LastPosition" to="." method="_on_LastPosition_pressed"]
 [connection signal="pressed" from="GeneratePosition" to="GeneratePosition" method="_on_GeneratePosition_pressed"]

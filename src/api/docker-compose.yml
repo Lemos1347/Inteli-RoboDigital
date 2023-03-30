@@ -4,9 +4,6 @@ services:
     build: .
     ports:
       - "3001:3001"
-    devices:
-      - /dev/ttyUSB0:/dev/ttyUSB0
-      - /dev/ttyUSB1:/dev/ttyUSB1
     volumes:
       - $PWD:/flask-app
     restart: always
