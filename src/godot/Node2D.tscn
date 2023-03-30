@@ -712,9 +712,9 @@ valign = 1
 
 [node name="Posicionamento2" type="Label" parent="."]
 margin_left = 791.0
-margin_top = 207.0
+margin_top = 194.0
 margin_right = 949.0
-margin_bottom = 221.0
+margin_bottom = 208.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "POSICIONAMENTO"
 align = 1
@@ -725,6 +725,16 @@ margin_left = 866.0
 margin_top = 361.0
 margin_right = 882.0
 margin_bottom = 376.0
+
+[node name="Explicacao" type="Label" parent="."]
+margin_left = 725.0
+margin_top = 210.0
+margin_right = 1012.0
+margin_bottom = 224.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "(garra representada por um quadrado branco)"
+align = 1
+valign = 1
 
 [connection signal="pressed" from="LastPosition" to="." method="_on_LastPosition_pressed"]
 [connection signal="pressed" from="GeneratePosition" to="GeneratePosition" method="_on_GeneratePosition_pressed"]
