@@ -103,3 +103,15 @@ docker compose up
 Pronto, o projeto já estará rodando em um container é poderá ser acessado em `localhost:3001` e o banco de dados `localhost:3002`!
 
 _Observação: caso o projeto rode em docker, não será possível conectar com o Dobot Magician Lite pois não foi feita a configuração no docker-compose_
+
+### Godot
+
+Após rodar o backend/api, agorá poderá abrir o ambiente de simulação.
+
+#### Windows
+
+Execute o arquivo localizado em `/src/godot/interface_executavel`.
+
+#### Mac
+
+Instale a engine GODOT e importe o projeto em `/src/godot`. Assim que carregar, rode a cena.
