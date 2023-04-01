@@ -21,11 +21,11 @@ As tecnologias utilizadas na construção da backend/api são:
 - MYSQL
   O backend é construido em flask, terá MySQL como banco de dados e tudo está conteinerizado.
 
-**Flask**    
-   Há dois arquivos python: `__init__.py` e `migrations.py`. O primeiro contém toda a lógica básica para rodar o servidor. Já o segundo, contém a classe para o esquema da tabela no banco de dados e caso necessário, as funções para criar as tabelas no banco de dados.
+**Flask**  
+ Há dois arquivos python: `__init__.py` e `migrations.py`. O primeiro contém toda a lógica básica para rodar o servidor. Já o segundo, contém a classe para o esquema da tabela no banco de dados e caso necessário, as funções para criar as tabelas no banco de dados.
 
-**Docker**    
-   Há dois arquivos para a dockerização da backend/api: `Dockerfile` e `docker-compose.yml`. O primeiro é responsável por configurar a build do python de acordo com a necessidade da aplicação. Já o segundo, é responsável por configurar e manejar dois containers: o para o python e o para o banco de dados MySQL.
+**Docker**  
+ Há dois arquivos para a dockerização da backend/api: `Dockerfile` e `docker-compose.yml`. O primeiro é responsável por configurar a build do python de acordo com a necessidade da aplicação. Já o segundo, é responsável por configurar e manejar dois containers: o para o python e o para o banco de dados MySQL.
 
 ## Ambiente de simulação
 
@@ -78,6 +78,19 @@ python3 __init__.py
 ```
 
 Pronto, o projeto já estará rodando em localhost!
+
+_Observação:_ Caso deseje criar as tabelas sem nenhum dado rode o seguinte comando antes de rodar o arquivo `__init__.py`:
+Em windows:
+
+```shell
+pyp migrations.py
+```
+
+Em mac:
+
+```shell
+python3 migrations.py
+```
 
 ### Docker
 
